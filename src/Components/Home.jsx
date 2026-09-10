@@ -39,7 +39,7 @@ function Home() {
         <button onClick={handleSearch} className="text-white bg-">Search</button>
       </div>
 
-      <div className=" grid grid-cols-2 gap-4 mx-auto">
+      <div className=" grid grid-cols-3 gap-4 mx-auto">
         {cities.map((city) => {
           return (
             <Link

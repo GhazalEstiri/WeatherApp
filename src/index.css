@@ -1,1 +1,12 @@
+body {
+  background-color: #050F1B
+  /* background-image:
+    linear-gradient(rgba(5, 15, 27, 0.333), rgba(5, 15, 27, 0.448)),
+    url(/src/assets/Dubai.jpg);
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+
 @import "tailwindcss";

@@ -62,13 +62,13 @@ function Home() {
 
 </header>
 
-      <div className=" grid grid-cols-3 gap-4 mx-auto">
+      <div className=" grid grid-cols-3 gap-7 mx-auto">
         {cities.map((city) => {
           return (
             <Link
               key={city.name}
               to={`/weather/${city.name}`}
-              className="relative h-60 overflow-hidden rounded-xl"
+              className="relative h-60 overflow-hidden rounded-xl "
             >
               <img
                 src={city.image}

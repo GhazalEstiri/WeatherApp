@@ -6,7 +6,10 @@ function WeatherDetails() {
   const [data, setData] = useState(null);
   const { city } = useParams();
 
-  const currentCity = cities.find((item) => item.name === city);
+  // const currentCity = cities.find((item) => item.name === city);
+  const currentCity = cities.find(
+    (item) => item.name.toLowerCase() === city.toLowerCase(),
+  );
   //   console.log(city)
   useEffect(() => {
     fetch(`https://wttr.in/${city}?format=j1&lang=fa`)
@@ -21,7 +24,7 @@ function WeatherDetails() {
     <section
       className="min-h-screen bg-cover bg-center flex flex-col justify-center items-center font-bold "
       style={{
-        backgroundImage: `url(${currentCity.image})`,
+        backgroundImage: currentCity ? `url(${currentCity.image})` : "none",
       }}
     >
       <div className="bg-[#dbdbdb9e] flex justify-center items-center rounded-[50px] w-[50%] flex-col mx-auto gap-10">
@@ -34,30 +37,45 @@ function WeatherDetails() {
                   <Cloudy size={60} />
                   {data.temp_C} °C
                 </p>
-                <p className="flex flex-row text-3xl">{data.weatherDesc[0].value}</p>
+                <p className="flex flex-row text-3xl">
+                  {data.weatherDesc[0].value}
+                </p>
               </div>
             </div>
 
             <div className="flex flex-row gap-10 p-4 w-[90%] justify-center items-center">
               <p className="flex flex-row border-r-2 p-4 gap-2">
-                <Eye />
+                <span>
+                  {" "}
+                  <Eye />
+                </span>
                 {data.visibility} km
               </p>
               <p className="flex flex-row  border-r-2 p-4 gap-2">
-                <Droplets />
+                <span>
+                  {" "}
+                  <Droplets />
+                </span>
                 {data.humidity} %
               </p>
               <p className="flex flex-row  border-r-2 p-4 gap-2">
-                <Wind />
+                <span>
+                  <Wind />
+                </span>
                 {data.windspeedKmph} km/h
               </p>
               <p className="flex flex-row  border-r-2 p-4 gap-2">
-                <WindArrowDown />
+                <span>
+                  <WindArrowDown />
+                </span>
                 {data.pressure} mmHg
               </p>
             </div>
             <p className="flex flex-row text-5xl">{data.observation_time}</p>
-            <p className="flex flex-row text-6xl justify-center items-center"><span className="text-8xl flex flex-row items-center">☁️</span>{data.cloudcover}%</p>
+            <p className="flex flex-row text-6xl justify-center items-center">
+              <span className="text-8xl flex flex-row items-center">☁️</span>
+              {data.cloudcover}%
+            </p>
           </>
         )}
       </div>

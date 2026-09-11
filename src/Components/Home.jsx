@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { cities } from "./CityCard";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-
+import CityMoon from "../assets/CityMoon.jpg";
 function Home() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -14,30 +13,54 @@ function Home() {
     navigate(`/weather/${search.trim()}`);
   };
   return (
-    <div className="p-5 ">
-      <h1 className="flex justify-center items-center p-10  text-white font-bold text-6xl">
-        Weather Cities
-      </h1>
+    <div className="p-5 flex flex-col gap-6">
+      <header className="relative h-130 overflow-hidden rounded-xl">
 
-      <div className="flex items-center gap-4 p-8  bg-[#101C2E] h-10 rounded-[50px] mb-5 w-[50%] justify-between mx-auto">
-        <div className="flex flex-row gap-4">
-          <span className="text-3xl text-[#fbfcfd]">⌕</span>
-          <input
-            type="text"
-            value={search}
-            className=" bg-transparent text-xl text-white placeholder:text-[#7F8EAF] outline-none"
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search any city..."
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-          />
-        </div>
+  <img
+    src={CityMoon}
+    alt=""
+    className="absolute inset-0 w-full h-full object-top"
+  />
 
-        <button onClick={handleSearch} className="text-white bg-">Search</button>
-      </div>
+  <div className="absolute inset-0 bg-black/30"></div>
+
+  <div className="relative z-10 flex flex-col items-center pt-20 gap-10 mt-30">
+
+    <h1 className="text-white font-bold text-6xl">
+      Weather Cities
+    </h1>
+
+    <div className="flex items-center gap-4 px-8 bg-[#101C2E] h-16 rounded-[50px] w-[50%]">
+      
+      <span className="text-3xl text-white">
+        ⌕
+      </span>
+
+      <input
+        type="text"
+        value={search}
+        className="flex-1 bg-transparent text-xl text-white placeholder:text-[#7F8EAF] outline-none"
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search any city..."
+        onKeyDown={(e) => {
+          if(e.key === "Enter"){
+            handleSearch();
+          }
+        }}
+      />
+
+      <button 
+        onClick={handleSearch}
+        className="text-white bg-blue-600 px-5 py-2 rounded-full"
+      >
+        Search
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
 
       <div className=" grid grid-cols-3 gap-4 mx-auto">
         {cities.map((city) => {

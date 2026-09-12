@@ -9,7 +9,7 @@ import Rome from "../assets/Rome.jpg";
 import Istanbul from "../assets/Istanbul.jpg";
 import Toronto from "../assets/Toronto.jpg";
 
-export  const cities = [
+export const cities = [
   {
     name: "Tehran",
     image: Tehran,
